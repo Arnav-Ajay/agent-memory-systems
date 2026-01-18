@@ -19,7 +19,7 @@ class EpisodicStore:
     def tail(self, n: int = 50) -> List[Dict[str, Any]]:
         if not os.path.exists(self.path):
             return []
-        # Simple tail: read all then slice (fine for Week-8 scale)
+        # Simple tail: read all then slice
         with open(self.path, "r", encoding="utf-8") as f:
             lines = [ln.strip() for ln in f.readlines() if ln.strip()]
         out = []
