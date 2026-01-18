@@ -4,6 +4,7 @@ from executor import Executor
 from response.generate import Generator
 from utils.logging_utils import write_trace
 from memory import MemoryRouter
+from memory.working import WorkingMemory
 
 from dataclasses import asdict
 
@@ -14,16 +15,18 @@ class Runtime:
 
     def run(self, question: str, *, k: int = 4):
         mem = MemoryRouter()
+        wm = WorkingMemory()
+        wm.goal = question
         
         # First step: prove persistence exists and is auditable.
         last_user_question = mem.read_semantic("last_user_question")
         recent_episodes = mem.read_recent_episodic(n=10)
 
         planner = Planner()
-        plan = planner.generate_plan(question, k=k)
+        plan = planner.generate_plan(question, k=k, wm=wm)
 
         executor = Executor()
-        execution_trace = executor.execute(plan)
+        execution_trace = executor.execute(plan, wm=wm)
         # NOTE: If multiple retrieve steps exist, the last one wins by design.
 
         retrieved_context = ""
@@ -65,6 +68,11 @@ class Runtime:
                 "semantic_writes": ["last_user_question", "last_answer_preview"],
                 "episodic_write": "append",
             },
+            "working_memory": {
+                "goal": wm.goal,
+                "thoughts": wm.thoughts,
+                "flags": wm.flags,
+            }
         })
 
         return answer

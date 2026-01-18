@@ -4,7 +4,7 @@ from tools.noop import noop_tool
 
 
 class Executor:
-    def execute(self, plan):
+    def execute(self, plan, wm=None):
         execution_trace = []
 
         for step in plan.steps:
@@ -21,6 +21,14 @@ class Executor:
                 raise ValueError(f"Unknown action: {step.action}")
 
             result = tool_fn(**step.args)
+
+            if wm is not None:
+                wm.thoughts.append(
+                    f"Executed step {step.step_id}: {step.action}"
+                )
+
+                if step.action == "retrieve":
+                    wm.flags["used_retrieval"] = True
 
 
             execution_trace.append({

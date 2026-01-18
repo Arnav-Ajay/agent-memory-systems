@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Optional
 
 from memory.episodic import EpisodicStore
 from memory.semantic import SemanticStore
-from memory import MemoryEvent
+from memory.schemas import MemoryEvent
 
 class MemoryRouter:
     """

@@ -4,8 +4,13 @@ from planner.plan_schema import Plan, PlanStep
 
 
 class Planner:
-    def generate_plan(self, question: str, *, k: int = 4) -> Plan:
+    def generate_plan(self, question: str, *, k: int = 4, wm=None) -> Plan:
         decision = decide_retrieval(question)
+
+        if wm is not None:
+            wm.thoughts.append(
+                f"Planner deciding retrieval for goal: {question}"
+            )
 
         if decision.requires_external_evidence:
             step = PlanStep(
