@@ -1,0 +1,10 @@
+{"ts_utc": 1768709842.664893, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": false}}
+{"ts_utc": 1768709842.6673567, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 0}}
+{"ts_utc": 1768709842.6681452, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768709842.668722, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768709842.668926, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768709880.8897305, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768709880.890025, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 1}}
+{"ts_utc": 1768709887.0252454, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768709887.0255916, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768709887.0257902, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}

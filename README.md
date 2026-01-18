@@ -308,7 +308,7 @@ This repository builds directly on:
 * [`agent-tool-retriever`](https://github.com/Arnav-Ajay/agent-tool-retriever) — tool-using decisions
 * [`agent-planner-executor`](https://github.com/Arnav-Ajay/agent-planner-executor) — reasoning separation
 
-It explicitly defers to later weeks:
+It explicitly defers to later repos:
 
 * Failure-first analysis
 * Observability UX
