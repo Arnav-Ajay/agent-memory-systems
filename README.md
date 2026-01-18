@@ -53,48 +53,52 @@ If you are looking for proof that memory *helps*, that is **out of scope for thi
 
 ## System Contract
 
-**Inputs**
+### Inputs
 
 * Task sequences spanning multiple runs
 * Optional static documents (unchanged from prior weeks)
 
-**Outputs**
+### Outputs
 
-* Agent actions
-* Explicit memory writes
+* Agent plans and actions
 * Explicit memory reads
-* Artifacts showing when state was accessed
+* Explicit memory writes
+* Artifacts showing when and why state was accessed
 
-**Invariant**
+### Invariant
 
-> If state is persisted or retrieved, that interaction must be explicitly logged.
+> If state is persisted or retrieved, that interaction must be explicitly logged and auditable.
 
 ---
 
 ## Memory Is a First-Class Mechanism (Not a Capability)
 
-Memory is treated as a **constrained subsystem** with:
+Memory is treated as a **constrained subsystem**, not an emergent behavior.
+
+This repository makes **no claim** that memory is beneficial.
+It only establishes the **conditions under which memory exists at all**.
+
+Memory is defined by:
 
 * explicit interfaces
 * explicit routing
 * explicit persistence rules
 
-This repository makes **no claim** that memory is beneficial.
-It only establishes the **conditions under which memory exists at all**.
-
 ---
 
 ## Memory Taxonomy (Implementation Scope)
 
-This repository implements **three distinct memory mechanisms**.
+This repository implements **three distinct memory mechanisms**, each with different guarantees.
+
+---
 
 ### 1. Working Context (Session-Local)
 
 **Stores**
 
-* Current plan
-* Temporary assumptions
-* Scratchpad state
+* Current goal
+* Planner thoughts
+* Execution flags
 
 **Properties**
 
@@ -113,20 +117,21 @@ This repository implements **three distinct memory mechanisms**.
 
 **Stores**
 
-* Past tasks
-* Tool outcomes
-* Execution events
+* Past questions
+* Plan actions taken
+* Whether retrieval occurred
+* Execution metadata
 
 **Properties**
 
 * Time-indexed
 * Append-only
 * Subject to decay rules
-* Not queried automatically
+* Read explicitly, never implicitly
 
 **Purpose**
 
-* Preserve a trace of prior events without asserting correctness or usefulness
+* Preserve a trace of prior events **without asserting relevance or correctness**
 
 ---
 
@@ -134,15 +139,13 @@ This repository implements **three distinct memory mechanisms**.
 
 **Stores**
 
-* Abstracted facts
-* Stable constraints
-* Explicitly approved invariants
+* Abstracted state (e.g. last question, answer preview)
 
 **Properties**
 
 * Written only through gating rules
-* Deduplicated
-* Retrieved only via explicit request
+* Overwritten deliberately
+* Retrieved only via explicit read
 
 **Purpose**
 
@@ -155,20 +158,71 @@ This repository implements **three distinct memory mechanisms**.
 ```
 User Task
    ↓
-Planner
-   ↓
-Executor
-   ↓
-Memory Router
-   ├── Working Context (ephemeral)
-   ├── Episodic Store (persisted, decaying)
-   └── Semantic Store (persisted, gated)
+Runtime
+   ├── Working State (execution-local)
+   │     ├── Planner
+   │     └── Executor
+   │
+   └── Memory Router (persisted state)
+         ├── Episodic Store
+         └── Semantic Store
 ```
 
 **Non-negotiable rule**
 
-Planner and Executor **cannot access memory directly**.
-All state interaction occurs through a routing layer.
+Planner and Executor cannot access persisted memory directly.
+All cross-session state interaction occurs exclusively through the Memory Router.
+
+---
+
+## Policy Layer (Explicitly Controllable)
+
+This repository introduces **policy-governed memory behavior**.
+
+Policies implemented:
+
+* **Retrieval policy** — may force retrieval based on episodic history
+* **Write filter** — gates what is allowed into semantic memory
+* **Forgetting policy** — decays episodic memory over time
+
+### Policy Mode Toggle
+
+All policies can be **enabled or disabled at runtime**:
+
+```python
+runtime.run(question, enforce_policies=True)
+runtime.run(question, enforce_policies=False)
+```
+
+This enables **direct comparison** between:
+
+* Memory present but unconstrained
+* Memory present and policy-constrained
+
+No other system components change.
+
+---
+
+## Observed Behaviors (From Artifacts)
+
+Across repeated runs, the following behaviors are **directly observable**:
+
+1. **State persistence exists**
+
+   * Prior questions and answers appear in subsequent runs
+   * Persistence is explicit and logged
+
+2. **Policy enforcement changes behavior**
+
+   * With policies enabled, retrieval can be forced even for conceptual questions
+   * With policies disabled, planner decisions rely solely on parametric judgment
+
+3. **Memory does not imply usefulness**
+
+   * Persisted state does not guarantee relevance
+   * Forced retrieval can introduce unrelated context
+
+These are **observations**, not claims of improvement.
 
 ---
 
@@ -219,9 +273,7 @@ agent-memory-systems/
 │   ├── memory/
 │   │   ├── episodic.jsonl
 │   │   ├── semantic.json
-│   │   └── snapshots/
-│   ├── plans/
-│   └── runs/
+│   │   └── events.jsonl
 │
 └── data/
     └── input_pdfs/
@@ -245,7 +297,7 @@ This system is expected to exhibit failures such as:
 
 * State accumulation without relevance
 * Persisted assumptions becoming stale
-* Memory retrieval interfering with planning
+* Forced retrieval polluting reasoning
 * Forgetting removing still-useful context
 
 These failures are **not mitigated here**.
@@ -261,8 +313,7 @@ This repository establishes that:
 * That persistence can be constrained and inspected
 * Memory access can be routed and logged
 * Forgetting can be implemented as a mechanism
-
-It does **not** establish that memory improves outcomes.
+* Policy enforcement measurably alters agent behavior
 
 ---
 
@@ -273,7 +324,7 @@ It does **not** establish that memory improves outcomes.
 * That memory improves agent performance
 * That more memory is beneficial
 
-Those questions are deferred.
+Those questions are explicitly deferred.
 
 ---
 
@@ -295,9 +346,9 @@ This repository produces:
 * Memory write records
 * Memory read traces
 * Session-to-session state carryover
-* Concrete evidence of persisted vs discarded state
+* Explicit policy-on vs policy-off behavioral differences
 
-No scoring or optimization metrics are claimed.
+No scoring, optimization, or quality claims are made.
 
 ---
 
@@ -308,10 +359,18 @@ This repository builds directly on:
 * [`agent-tool-retriever`](https://github.com/Arnav-Ajay/agent-tool-retriever) — tool-using decisions
 * [`agent-planner-executor`](https://github.com/Arnav-Ajay/agent-planner-executor) — reasoning separation
 
-It explicitly defers to later repos:
+It explicitly defers to later repositories for:
 
-* Failure-first analysis
+* Failure-first synthesis
 * Observability UX
-* Cross-system synthesis
+* Cross-system conclusions
+
+---
+
+### Final note (implicit but true)
+
+This repository proves **memory can exist without being helpful**.
+
+That is the point.
 
 ---
