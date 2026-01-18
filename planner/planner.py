@@ -4,8 +4,23 @@ from planner.plan_schema import Plan, PlanStep
 
 
 class Planner:
-    def generate_plan(self, question: str, *, k: int = 4, wm=None) -> Plan:
+    def generate_plan(self, question: str, *, k: int = 4, wm=None, memory_signal=None) -> Plan:
         decision = decide_retrieval(question)
+
+        force_retrieval = bool(memory_signal and memory_signal.get("force_retrieval"))
+
+        if force_retrieval:
+            if wm is not None:
+                wm.thoughts.append("Planner forcing retrieval due to retrieval policy")
+
+            step = PlanStep(
+                step_id=1,
+                action="retrieve",
+                args={"question": question, "k": k},
+                rationale="forced by retrieval policy based on episodic history",
+            )
+
+            return Plan(objective=question, steps=[step])
 
         if wm is not None:
             wm.thoughts.append(

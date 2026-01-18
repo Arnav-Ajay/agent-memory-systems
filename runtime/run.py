@@ -5,6 +5,9 @@ from response.generate import Generator
 from utils.logging_utils import write_trace
 from memory import MemoryRouter
 from memory.working import WorkingMemory
+from policies.retrieval_policy import allow_retrieval
+from policies.write_filter import allow_semantic_write
+from policies.forgetting import apply_forgetting
 
 from dataclasses import asdict
 
@@ -13,7 +16,7 @@ class Runtime:
     def _serialize_plan(self, plan):
         return asdict(plan)
 
-    def run(self, question: str, *, k: int = 4):
+    def run(self, question: str, *, k: int = 4, enforce_policies: bool = True):
         mem = MemoryRouter()
         wm = WorkingMemory()
         wm.goal = question
@@ -21,9 +24,14 @@ class Runtime:
         # First step: prove persistence exists and is auditable.
         last_user_question = mem.read_semantic("last_user_question")
         recent_episodes = mem.read_recent_episodic(n=10)
+        if enforce_policies:
+            recent_episodes = apply_forgetting(recent_episodes)
+            force = allow_retrieval(wm=wm, episodic_tail=recent_episodes)
+        else:
+            force = False
 
         planner = Planner()
-        plan = planner.generate_plan(question, k=k, wm=wm)
+        plan = planner.generate_plan(question, k=k, wm=wm, memory_signal={"force_retrieval": force is True})
 
         executor = Executor()
         execution_trace = executor.execute(plan, wm=wm)
@@ -45,8 +53,10 @@ class Runtime:
 
         answer = Generator().generate_answer(question, retrieved_context)
 
-        mem.write_semantic("last_user_question", question)
-        mem.write_semantic("last_answer_preview", answer[:200])
+        if not enforce_policies or allow_semantic_write("last_user_question", question, wm=wm, episodic_tail=recent_episodes):
+            mem.write_semantic("last_user_question", question)
+        if not enforce_policies or allow_semantic_write("last_answer_preview", answer[:200], wm=wm, episodic_tail=recent_episodes):
+            mem.write_semantic("last_answer_preview", answer[:200])
 
         mem.write_episodic({
             "ts_utc": __import__("time").time(),
@@ -72,7 +82,8 @@ class Runtime:
                 "goal": wm.goal,
                 "thoughts": wm.thoughts,
                 "flags": wm.flags,
-            }
+            },
+            "policy_mode": enforce_policies,
         })
 
         return answer

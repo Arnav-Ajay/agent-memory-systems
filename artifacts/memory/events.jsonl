@@ -1,35 +1,45 @@
-{"ts_utc": 1768757163.9464843, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": false}}
-{"ts_utc": 1768757163.9467802, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 0}}
-{"ts_utc": 1768757163.9478703, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
-{"ts_utc": 1768757163.9481914, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
-{"ts_utc": 1768757163.9483867, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
-{"ts_utc": 1768757544.4833248, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
-{"ts_utc": 1768757544.4836974, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 1}}
-{"ts_utc": 1768757551.7794063, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
-{"ts_utc": 1768757551.779954, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
-{"ts_utc": 1768757551.7801712, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
-{"ts_utc": 1768757555.5380905, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
-{"ts_utc": 1768757555.5383573, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 2}}
-{"ts_utc": 1768757563.0537257, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
-{"ts_utc": 1768757563.0541086, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
-{"ts_utc": 1768757563.0543072, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
-{"ts_utc": 1768757567.6281693, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
-{"ts_utc": 1768757567.628452, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 3}}
-{"ts_utc": 1768757567.6295094, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
-{"ts_utc": 1768757567.6298, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
-{"ts_utc": 1768757567.6299686, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
-{"ts_utc": 1768757577.9402344, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
-{"ts_utc": 1768757577.9405768, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 4}}
-{"ts_utc": 1768757577.9418373, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
-{"ts_utc": 1768757577.9421146, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
-{"ts_utc": 1768757577.9423277, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
-{"ts_utc": 1768757589.4989586, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
-{"ts_utc": 1768757589.4992895, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 5}}
-{"ts_utc": 1768757589.500576, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
-{"ts_utc": 1768757589.5008855, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
-{"ts_utc": 1768757589.5011184, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
-{"ts_utc": 1768757601.0508447, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
-{"ts_utc": 1768757601.051137, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 6}}
-{"ts_utc": 1768757601.0522895, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
-{"ts_utc": 1768757601.0526145, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
-{"ts_utc": 1768757601.0527885, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768759339.7470329, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": false}}
+{"ts_utc": 1768759339.7473521, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 0}}
+{"ts_utc": 1768759339.7483895, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768759339.7487133, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768759339.7488937, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768759349.217889, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768759349.218192, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 1}}
+{"ts_utc": 1768759356.70462, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768759356.7050545, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768759356.7052467, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768759365.5455937, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768759365.5458932, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 2}}
+{"ts_utc": 1768759372.9015942, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768759372.9019594, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768759372.902154, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768759393.105778, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768759393.1060646, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 3}}
+{"ts_utc": 1768759400.493764, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768759400.4941332, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768759400.4943185, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768759406.4570322, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768759406.4573078, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 4}}
+{"ts_utc": 1768759414.0035539, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768759414.0038862, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768759414.0040631, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768759419.6096551, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768759419.610126, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 5}}
+{"ts_utc": 1768759426.9773762, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768759426.9777393, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768759426.9779232, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768759430.596143, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768759430.5964823, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 6}}
+{"ts_utc": 1768759437.9914327, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768759437.991842, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768759437.9920146, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768760284.1205933, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768760284.1209588, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 7}}
+{"ts_utc": 1768760291.5122075, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768760291.5126483, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768760291.5130174, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
+{"ts_utc": 1768760304.8974245, "event_type": "read", "store": "semantic", "key": "last_user_question", "payload": {"found": true}}
+{"ts_utc": 1768760304.8977578, "event_type": "read", "store": "episodic", "key": "tail:10", "payload": {"returned": 8}}
+{"ts_utc": 1768760304.898952, "event_type": "write", "store": "semantic", "key": "last_user_question", "payload": {"type": "str"}}
+{"ts_utc": 1768760304.8992722, "event_type": "write", "store": "semantic", "key": "last_answer_preview", "payload": {"type": "str"}}
+{"ts_utc": 1768760304.8994434, "event_type": "write", "store": "episodic", "key": "append", "payload": {"keys": ["last_user_question_before_run", "plan_actions", "question", "recent_episode_count_before_run", "ts_utc", "used_retrieval"]}}
