@@ -2,7 +2,6 @@
 from tools.retrieve_tool import retrieve_tool
 from tools.noop import noop_tool
 
-
 class Executor:
     def execute(self, plan, wm=None):
         execution_trace = []

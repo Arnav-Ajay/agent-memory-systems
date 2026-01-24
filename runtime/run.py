@@ -11,7 +11,6 @@ from policies.forgetting import apply_forgetting
 
 from dataclasses import asdict
 
-
 class Runtime:
     def _serialize_plan(self, plan):
         return asdict(plan)

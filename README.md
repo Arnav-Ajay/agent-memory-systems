@@ -56,7 +56,7 @@ If you are looking for proof that memory *helps*, that is **out of scope for thi
 ### Inputs
 
 * Task sequences spanning multiple runs
-* Optional static documents (unchanged from prior weeks)
+* Optional static documents (unchanged from earlier system iterations)
 
 ### Outputs
 
@@ -374,3 +374,23 @@ This repository proves **memory can exist without being helpful**.
 That is the point.
 
 ---
+
+## 🔚 Architectural Closure
+
+This repository completes the agent mechanics layer mentioned in [`agent-systems-core`](https://github.com/Arnav-Ajay/agent-systems-core).
+
+At this point, the system has:
+
+* explicit control over whether to retrieve
+* explicit separation of planning vs execution
+* explicit mechanisms for state persistence and forgetting
+
+No additional agent capability can be meaningfully evaluated without failure analysis.
+
+The remaining work is not to add features, but to understand:
+
+* how these systems fail under pressure
+* where observability breaks down
+* which abstractions mislead builders
+
+Those questions are addressed in subsequent repositories focused on failure modes, tracing, and system-level synthesis.

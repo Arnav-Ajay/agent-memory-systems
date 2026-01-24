@@ -1,4 +1,4 @@
-# retriever.py → embeddings + top-K
+# tools/retriever_core.py
 import re
 import math
 import numpy as np
@@ -48,9 +48,9 @@ def retrieve_similar_documents(vector_store, query, top_k=4):
 
     return similarities[:top_k]
 
-# -------------------------
-# Sparse (BM25) — Week 3
-# -------------------------
+# -------------
+# Sparse (BM25)
+# -------------
 _TOKEN_RE = re.compile(r"[a-z0-9]+")
 
 def tokenize(text: str):
@@ -143,9 +143,9 @@ def sparse_retriever(query, bm25_index, top_k=50):
     scores.sort(key=lambda x: x[1], reverse=True)
     return scores[:top_k]
 
-# -------------------------
+# ---------------------------------------
 # Hybrid merge — explicit + deterministic
-# -------------------------
+# ----------------------------------------
 def hybrid_retriever(query, vector_store, bm25_index,
                     top_k=4, dense_top_n=20, sparse_top_n=42,
                     D=20, S=20):

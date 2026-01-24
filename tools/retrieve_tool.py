@@ -1,3 +1,4 @@
+# tools/retrieve_tool.py
 from __future__ import annotations
 import os
 from dataclasses import dataclass
@@ -13,9 +14,9 @@ from tools.reranker_core import rerank_candidates
 from tools.ingest import load_pdf, chunk_texts
 
 
-# -------------------------
-# Data contracts (DO NOT CHANGE)
-# -------------------------
+# --------------
+# Data contracts 
+# --------------
 
 @dataclass(frozen=True)
 class RetrievedChunk:
@@ -73,9 +74,9 @@ def _load_corpus(
     return payload
 
 
-# -------------------------
-# Retrieval Tool (Week-6)
-# -------------------------
+# --------------
+# Retrieval Tool
+# --------------
 
 def retrieve_tool(
     question: str,

@@ -1,4 +1,4 @@
-# ingest.py → PDF → chunks
+# tools/ingest.py
 import pdfplumber
 import unicodedata
 import re
@@ -264,8 +264,6 @@ def chunk_semantic(
         out[i] = c.strip()
 
     return out
-
-
 
 def chunk_texts(text, strategy="fixed", **kwargs):
     if strategy == "fixed":
