@@ -1,0 +1,5 @@
+Metadata-Version: 2.4
+Name: agent-memory-systems
+Version: 0.1.0
+Summary: Agent pipeline with planner, tools, and memory
+Requires-Python: >=3.10
