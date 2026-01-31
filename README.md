@@ -226,61 +226,6 @@ These are **observations**, not claims of improvement.
 
 ---
 
-## File Structure
-
-```
-agent-memory-systems/
-│
-├── README.md
-├── requirements.txt
-├── main.py
-│
-├── runtime/
-│   └── run.py                # orchestrates agent + memory lifecycle
-│
-├── planner/
-│   ├── planner.py
-│   └── plan_schema.py
-│
-├── executor/
-│   └── executor.py
-│
-├── decision/
-│   ├── decide.py
-│   └── schema.py
-│
-├── memory/
-│   ├── episodic.py           # persisted, decaying events
-│   ├── semantic.py           # persisted, gated abstractions
-│   ├── working.py            # in-memory session context
-│   ├── router.py             # explicit read/write control
-│   └── schemas.py
-│
-├── policies/
-│   ├── forgetting.py         # decay mechanics
-│   ├── write_filter.py       # persistence gating
-│   └── retrieval_policy.py
-│
-├── tools/
-│   ├── ingest.py
-│   ├── retrieve_tool.py
-│   └── reranker_core.py
-│
-├── logs/
-│   └── traces.jsonl          # observability only
-│
-├── artifacts/
-│   ├── memory/
-│   │   ├── episodic.jsonl
-│   │   ├── semantic.json
-│   │   └── events.jsonl
-│
-└── data/
-    └── input_pdfs/
-```
-
----
-
 ## Observability vs State (Hard Boundary)
 
 * **Logs** explain *what happened*
@@ -339,58 +284,47 @@ All state interactions are materialized in `artifacts/`.
 
 ---
 
-## Evaluation Artifacts
-
-This repository produces:
-
-* Memory write records
-* Memory read traces
-* Session-to-session state carryover
-* Explicit policy-on vs policy-off behavioral differences
-
-No scoring, optimization, or quality claims are made.
-
----
-
 ## Relationship to Other Repositories
 
 This repository builds directly on:
 
-* [`agent-tool-retriever`](https://github.com/Arnav-Ajay/agent-tool-retriever) — tool-using decisions
-* [`agent-planner-executor`](https://github.com/Arnav-Ajay/agent-planner-executor) — reasoning separation
-
-It explicitly defers to later repositories for:
-
-* Failure-first synthesis
-* Observability UX
-* Cross-system conclusions
+* [`agent-tool-retriever`](https://github.com/Arnav-Ajay/agent-tool-retriever) — retrieval as an explicit decision
+* [`agent-planner-executor`](https://github.com/Arnav-Ajay/agent-planner-executor) — planning vs execution separation
 
 ---
 
-### Final note (implicit but true)
+## 🔚 Architectural Transition (What Comes Next)
+
+At this point, the agent system has:
+
+* explicit control over **whether to retrieve**
+* explicit separation of **planning vs execution**
+* explicit mechanisms for **state persistence and forgetting**
+
+What remains unresolved is **output itself**.
+
+Specifically:
+
+> Given retrieved evidence and persisted state,
+> **should the agent generate an answer at all?**
+
+That question is **intentionally not addressed here**.
+
+It is the focus of the next system layer:
+
+* **[`llm-generation-control`](https://github.com/Arnav-Ajay/llm-generation-control)** —
+  where generation is treated as a **policy-governed decision**, not a default behavior.
+
+Only after memory exists *and* is governable does it make sense to ask whether speaking is justified.
+
+---
+
+### Final note
 
 This repository proves **memory can exist without being helpful**.
 
-That is the point.
+The next repository asks a harder question:
+
+> Even if memory and evidence exist — should the system respond?
 
 ---
-
-## 🔚 Architectural Closure
-
-This repository completes the agent mechanics layer mentioned in [`agent-systems-core`](https://github.com/Arnav-Ajay/agent-systems-core).
-
-At this point, the system has:
-
-* explicit control over whether to retrieve
-* explicit separation of planning vs execution
-* explicit mechanisms for state persistence and forgetting
-
-No additional agent capability can be meaningfully evaluated without failure analysis.
-
-The remaining work is not to add features, but to understand:
-
-* how these systems fail under pressure
-* where observability breaks down
-* which abstractions mislead builders
-
-Those questions are addressed in subsequent repositories focused on failure modes, tracing, and system-level synthesis.
