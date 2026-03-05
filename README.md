@@ -293,7 +293,7 @@ This repository builds directly on:
 
 ---
 
-## 🔚 Architectural Transition (What Comes Next)
+## Architectural Transition (What Comes Next)
 
 At this point, the agent system has:
 
